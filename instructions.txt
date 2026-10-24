@@ -1,0 +1,68 @@
+QUICK START: HOW TO RUN PIXIE
+=============================
+
+Run all commands from the project root folder, in the VS Code terminal.
+
+
+FIRST TIME ONLY
+---------------
+
+1. Make and turn on the virtual environment
+
+   Mac/Linux:
+     python3 -m venv venv
+     source venv/bin/activate
+
+   Windows (PowerShell):
+     python -m venv venv
+     venv\Scripts\Activate.ps1
+
+2. Install packages
+     pip install -r requirements.txt
+
+3. Create a .env file in the project root with:
+     MODEL_NAME=google/gemma-4-e4b
+     SERVER_URL=http://localhost:1234/v1
+     COLLEGE_SCORECARD_API_KEY=your-key-here
+
+4. Build the data (run in this order)
+     python data/fetch_schools.py
+     python data/build_documents.py
+     python data/build_index.py
+     python data/build_majors_index.py
+
+
+EVERY TIME YOU RUN IT
+---------------------
+
+1. Open LM Studio. Load Gemma 4.
+   Settings > Local Model API > turn "Local API server" to Running.
+
+2. In the VS Code terminal, turn on the venv if you don't see (venv):
+     Mac/Linux:  source venv/bin/activate
+     Windows:    venv\Scripts\Activate.ps1
+
+3. Start the backend:
+     uvicorn backend.main:app --reload
+
+4. Open in your browser:
+     http://127.0.0.1:8000
+
+
+TO STOP
+-------
+Click the terminal and press Ctrl+C.
+
+
+TO RESTART (after changing .env or re-running the data scripts)
+---------------------------------------------------------------
+Ctrl+C, then run again:
+     uvicorn backend.main:app --reload
+
+
+QUICK FIXES
+-----------
+"No module named backend"   You're not in the project root folder.
+Connection error            LM Studio server isn't Running, or .env is wrong.
+Page won't load             Check frontend/ is in the project root.
+No (venv) showing           Run the activate command from step 2 above.
