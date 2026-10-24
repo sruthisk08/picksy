@@ -126,3 +126,6 @@ def chat(req: ChatRequest):
         "school_cards": school_cards,
         "model": MODEL_NAME,
     }
+
+from fastapi.staticfiles import StaticFiles
+app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
