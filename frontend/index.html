@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pixie – find your college major</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <img class="pixie" src="pixie.png" alt="Pixie the fairy" />
+        <h1>Hi, I’m Pixie!</h1>
+        <p class="tagline">
+          Tell me what you love, and I’ll help you find college majors and
+          schools that fit.
+        </p>
+      </header>
+
+      <section class="chat" aria-label="Chat with Pixie">
+        <div id="messages" class="messages" role="log" aria-live="polite"></div>
+
+        <div id="suggestions" class="suggestions">
+          <button type="button" class="chip">I like art and math</button>
+          <button type="button" class="chip">I’m on a tight budget</button>
+          <button type="button" class="chip">
+            I have no idea what to study
+          </button>
+        </div>
+
+        <form id="chat-form" class="composer" autocomplete="off">
+          <label for="input" class="sr-only">Message Pixie</label>
+          <input
+            id="input"
+            type="text"
+            placeholder="Tell Pixie about your interests…"
+            maxlength="500"
+          />
+          <button id="send" type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

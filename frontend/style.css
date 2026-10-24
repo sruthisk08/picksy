@@ -1,0 +1,253 @@
+:root {
+  --pink: #ffcfde; /* page background */
+  --pink-soft: #fff0f7; /* bot bubbles, input */
+  --pink-line: #f2a9c2; /* borders */
+  --magenta: #b3237a; /* user bubbles, send button */
+  --text: #38282d; /* main text */
+  --white: #ffffff;
+
+  --font: "Cascadia Code", Consolas, Menlo, "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--pink);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Layout ---------- */
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+/* ---------- Header ---------- */
+.hero {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.pixie {
+  display: block;
+  width: 170px;
+  max-width: 60%;
+  height: auto;
+  margin: 0 auto;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+h1 {
+  font-weight: 700;
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  line-height: 1.15;
+  margin: 0.5rem 0;
+}
+
+.tagline {
+  max-width: 36ch;
+  margin: 0 auto;
+}
+
+/* ---------- Chat card ---------- */
+.chat {
+  background: var(--white);
+  border: 3px solid var(--pink-line);
+  border-radius: 28px;
+  padding: 1rem;
+  box-shadow: 0 10px 30px rgba(56, 40, 45, 0.12);
+}
+
+.messages {
+  height: min(52vh, 420px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.5rem 0.25rem;
+}
+
+.msg {
+  max-width: 85%;
+  padding: 0.7rem 1rem;
+  border-radius: 20px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+.msg.bot {
+  align-self: flex-start;
+  background: var(--pink-soft);
+  border: 2px solid var(--pink-line);
+  border-bottom-left-radius: 6px;
+}
+.msg.user {
+  align-self: flex-end;
+  background: var(--magenta);
+  color: var(--white);
+  border-bottom-right-radius: 6px;
+}
+
+/* typing indicator */
+.typing {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.typing span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--magenta);
+  animation: bounce 1s ease-in-out infinite;
+}
+.typing span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.typing span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-5px);
+    opacity: 1;
+  }
+}
+
+/* ---------- Suggestions ---------- */
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0.25rem 0.25rem;
+}
+.suggestions[hidden] {
+  display: none;
+}
+
+.chip {
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text);
+  background: var(--white);
+  border: 2px solid var(--pink-line);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+.chip:hover {
+  background: var(--pink-soft);
+  border-color: var(--magenta);
+}
+
+/* ---------- Composer ---------- */
+.composer {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.composer input {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  color: var(--text);
+  text-align: center;
+  background: var(--pink-soft);
+  border: 2px solid var(--pink-line);
+  border-radius: 999px;
+  padding: 0.7rem 1.1rem;
+}
+.composer input::placeholder {
+  color: #7d6a71;
+}
+
+.composer button {
+  font: inherit;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--magenta);
+  border: 0;
+  border-radius: 999px;
+  padding: 0.7rem 1.5rem;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    transform 0.1s;
+}
+.composer button:hover {
+  background: var(--text);
+}
+.composer button:active {
+  transform: scale(0.96);
+}
+.composer button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+:focus-visible {
+  outline: 3px solid var(--magenta);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .composer button {
+    padding: 0.7rem 1.1rem;
+  }
+  .msg {
+    max-width: 92%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixie,
+  .typing span {
+    animation: none;
+  }
+}
