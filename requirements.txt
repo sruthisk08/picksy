@@ -44,8 +44,8 @@ mmh3==5.3.1
 mpmath==1.3.0
 multidict==7.2.1
 narwhals==2.27.1
-networkx==3.6.1
-numpy==2.4.6
+networkx==3.6
+numpy==2.5.4
 oauthlib==4.0.0
 onnxruntime==1.31.0
 openai==3.37.0
@@ -79,8 +79,9 @@ rich==15.0.0
 rpds-py==2026.9.1
 safetensors==0.8.0
 scikit-learn==1.9.1
-scipy==1.17.1
+scipy==1.18.1
 sentence-transformers==6.2.0
+setuptools==84.2.1
 shellingham==1.5.4
 six==1.17.0
 sniffio==1.3.1

@@ -88,9 +88,13 @@ for s in schools:
         "text": text,
         "metadata": {
             "name": s.get("school.name") or "",
+            "city": s.get("school.city") or "",
             "state": s.get("school.state") or "",
-            "net_price": s.get("latest.cost.avg_net_price.overall") or -1,
             "ownership": OWNERSHIP.get(s.get("school.ownership"), ""),
+            "net_price": s.get("latest.cost.avg_net_price.overall") or -1,
+            "grad_rate": s.get("latest.completion.rate_suppressed.overall") or -1,
+            "earnings": s.get("latest.earnings.10_yrs_after_entry.median") or -1,
+            "website": url,
         },
     })
 
