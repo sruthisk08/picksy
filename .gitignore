@@ -27,6 +27,7 @@ share/python-wheels/
 *.egg
 MANIFEST
 chroma_db/
+__pycache__/
 
 # PyInstaller
 #   Usually these files are written by a python script from a template
